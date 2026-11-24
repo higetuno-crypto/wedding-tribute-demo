@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>結婚祝いの寄せ書き | ハレの日チャンネル</title>
+<style>
+  @page {
+    size: 182mm 257mm;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    width: 182mm;
+    height: 257mm;
+    background: #fff;
+    font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Roboto", sans-serif;
+    color: #0f0f0f;
+  }
+
+  .page {
+    width: 182mm;
+    height: 257mm;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== トップバー ===== */
+  .topbar {
+    flex: 0 0 8mm;
+    padding: 0 4mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0f0f0f;
+    border-bottom: none;
+  }
+
+  .yt-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.2mm;
+  }
+
+  .yt-logo-icon {
+    width: 7mm;
+    height: 5mm;
+    background: #ff0000;
+    border-radius: 1.2mm;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .yt-logo-icon::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 1.8mm solid #fff;
+    border-top: 1.1mm solid transparent;
+    border-bottom: 1.1mm solid transparent;
+    margin-left: 0.3mm;
+  }
+
+  .yt-logo-text {
+    font-weight: 700;
+    font-size: 4.2mm;
+    letter-spacing: -0.08em;
+    color: #fff;
+  }
+
+  .topbar-icons {
+    display: flex;
+    gap: 4mm;
+    align-items: center;
+    color: #fff;
+  }
+
+  .icon-search {
+    width: 4mm;
+    height: 4mm;
+    border: 0.5mm solid #fff;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .icon-search::after {
+    content: "";
+    position: absolute;
+    bottom: -1.2mm;
+    right: -0.6mm;
+    width: 1.8mm;
+    height: 0.5mm;
+    background: #fff;
+    transform: rotate(45deg);
+    border-radius: 0.2mm;
+  }
+
+  .icon-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+    align-items: center;
+  }
+
+  .icon-menu span {
+    width: 1mm;
+    height: 1mm;
+    background: #fff;
+    border-radius: 50%;
+    display: block;
+  }
+
+  /* ===== 動画プレイヤー ===== */
+  .player {
+    flex: 0 0 94mm;
+    width: 100%;
+    background: #d8d8d8;
+    position: relative;
+    overflow: hidden;
+    border: 0.4mm dashed #999;
+    container-type: inline-size;
+  }
+
+  .player-photo-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 3.2mm;
+    background: linear-gradient(135deg, #ececec 0%, #d4d4d4 100%);
+    flex-direction: column;
+    gap: 1.5mm;
+    text-align: center;
+  }
+
+  .player-photo-area .icon {
+    font-size: 8mm;
+    opacity: 0.45;
+  }
+  .player-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center top;
+  object-fit: cover;
+  display: block;
+}
+
+  .player-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5mm;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0.6mm 2mm;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 0.5mm;
+    background: rgba(255,255,255,0.3);
+    margin-bottom: 0.6mm;
+  }
+
+  .progress-fill {
+    width: 38%;
+    height: 100%;
+    background: #ff0000;
+    position: relative;
+  }
+
+  .progress-fill::after {
+    content: "";
+    position: absolute;
+    right: -0.8mm;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.6mm;
+    height: 1.6mm;
+    background: #ff0000;
+    border-radius: 50%;
+  }
+
+  .controls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 2.2mm;
+  }
+
+  .controls-left, .controls-right {
+    display: flex;
+    gap: 1.5mm;
+    align-items: center;
+  }
+
+  /* ===== タイトル ===== */
+  .title-section {
+    flex: 0 0 auto;
+    padding: 1.3mm 4mm 0.8mm 4mm;
+  }
+
+  .video-title {
+    font-size: 3.6mm;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.5mm;
+  }
+
+  .video-title .highlight {
+    color: #ff0000;
+  }
+
+  .video-title .small-tag {
+    font-size: 2.8mm;
+    color: #555;
+    font-weight: 500;
+  }
+
+  .video-meta {
+    font-size: 2.3mm;
+    color: #606060;
+  }
+
+  .video-meta .hashtag {
+    color: #065fd4;
+  }
+
+  /* ===== チャンネルバー ===== */
+  .channel-bar {
+    flex: 0 0 auto;
+    padding: 1.2mm 4mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.3mm solid #e5e5e5;
+    border-bottom: 0.3mm solid #e5e5e5;
+  }
+
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .channel-icon {
+    width: 6mm;
+    height: 6mm;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 2.8mm;
+  }
+
+  .channel-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1mm;
+  }
+
+  .channel-name {
+    font-size: 2.8mm;
+    font-weight: 600;
+  }
+
+  .channel-subs {
+    font-size: 2.2mm;
+    color: #606060;
+  }
+
+  .subscribe-btn {
+    background: #0f0f0f;
+    color: #fff;
+    padding: 0.8mm 2.3mm;
+    border-radius: 100px;
+    font-size: 2.3mm;
+    font-weight: 600;
+  }
+
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.2mm;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8mm;
+    background: #f2f2f2;
+    color: #0f0f0f;
+    padding: 0.8mm 2.3mm;
+    border-radius: 100px;
+    font-size: 2.3mm;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .action-btn svg {
+    width: 3.2mm;
+    height: 3.2mm;
+    display: block;
+    fill: none;
+    stroke: #0f0f0f;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .subscribe-btn .heart {
+    color: #ff6b6b;
+  }
+
+  /* ===== 説明欄 ===== */
+  .info-section {
+    flex: 0 0 auto;
+    padding: 1.2mm 4mm;
+    border-bottom: 0.3mm solid #e5e5e5;
+  }
+
+  .description {
+    background: #f2f2f2;
+    border-radius: 1.5mm;
+    padding: 1.5mm 2mm;
+    font-size: 2.2mm;
+    line-height: 1.35;
+  }
+
+  .description .desc-meta {
+    font-weight: 700;
+    margin-bottom: 0.4mm;
+    font-size: 2.4mm;
+  }
+
+  .description .hashtag {
+    color: #065fd4;
+  }
+
+  /* ===== コメントセクション ===== */
+  .comments-section {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .comments-header {
+    flex: 0 0 auto;
+    padding: 1.2mm 4mm 0.6mm 4mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+  }
+
+  .comments-title {
+    font-size: 3mm;
+    font-weight: 700;
+  }
+
+  .comments-count {
+    font-size: 2.7mm;
+    color: #606060;
+  }
+
+  /* ピン留めコメント */
+  .pinned-comment {
+    flex: 0 0 auto;
+    margin: 0 4mm 0.8mm 4mm;
+    padding: 1mm 2.2mm;
+    background: linear-gradient(135deg, #fff5f5 0%, #fff0f5 100%);
+    border-radius: 1.5mm;
+    border-left: 0.7mm solid #ff0000;
+  }
+
+  .pinned-label {
+    font-size: 2mm;
+    color: #606060;
+    margin-bottom: 0.3mm;
+  }
+
+  .pinned-content {
+    display: flex;
+    gap: 1.8mm;
+    align-items: flex-start;
+  }
+
+  .pinned-avatar {
+    width: 5.5mm;
+    height: 5.5mm;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2.6mm;
+    flex-shrink: 0;
+  }
+
+  .pinned-text {
+    font-size: 2.6mm;
+    line-height: 1.35;
+    flex: 1;
+  }
+
+  .pinned-text .highlight {
+    color: #ff0000;
+    font-weight: 700;
+  }
+
+  /* コメント本体 */
+  .comment-list {
+    flex: 1 1 auto;
+    padding: 0 4mm 1.5mm 4mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .comment {
+    flex: 1 1 0;
+    display: flex;
+    gap: 1.8mm;
+    padding: 0.3mm 0;
+    border-bottom: 0.2mm dotted #d4d4d4;
+    min-height: 0;
+  }
+
+  .comment:last-child {
+    border-bottom: none;
+  }
+
+  .comment-avatar {
+    width: 6mm;
+    height: 6mm;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2.8mm;
+    flex-shrink: 0;
+  }
+
+  .comment-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .avatar-A { background: linear-gradient(135deg, #ff9800, #f57c00); }
+  .avatar-B { background: linear-gradient(135deg, #2196f3, #1565c0); }
+  .avatar-C { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+  .avatar-D { background: linear-gradient(135deg, #9c27b0, #6a1b9a); }
+  .avatar-E { background: linear-gradient(135deg, #26c6da, #00838f); }
+  .avatar-F { background: linear-gradient(135deg, #ec407a, #c2185b); }
+
+  .comment-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+    margin-bottom: 0.3mm;
+  }
+
+  .comment-name {
+    font-size: 2.5mm;
+    font-weight: 600;
+  }
+
+  .comment-time {
+    font-size: 2mm;
+    color: #606060;
+  }
+
+  .comment-message {
+    flex: 1;
+    border: 0.4mm dashed #c0c0c0;
+    border-radius: 1.2mm;
+    padding: 0.8mm;
+    color: #393939;
+    font-size: 2.4mm;
+    line-height: 1.35;
+    background: #fafafa;
+    min-height: 6mm;
+  }
+
+  .comment-actions {
+    display: flex;
+    gap: 2.5mm;
+    margin-top: 0.2mm;
+    font-size: 2mm;
+    color: #606060;
+  }
+
+  .comment-actions .reply-link {
+    font-weight: 600;
+  }
+
+
+  .player-lettering {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .player-lettering span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    paint-order: stroke fill;
+    -webkit-text-stroke: 0.95cqw #fff;
+  }
+
+  .player-celebration {
+    top: 1%;
+    color: #a5090b;
+    font-size: 25cqw;
+    filter: drop-shadow(0 0 0.25cqw #e0a400) drop-shadow(0 0 0.38cqw #b97200);
+  }
+
+  .player-congratulations {
+    top: 53%;
+    color: #e80565;
+    font-size: 12cqw;
+    filter: drop-shadow(0 0.5cqw 0.28cqw #541328);
+  }
+
+  @media screen {
+    .page { height: auto; min-height: 257mm; overflow: visible; }
+    .comment { min-height: min-content; }
+    .comment-message { min-height: min-content; font-size: 12px; }
+  }
+
+  @media screen and (max-width: 688px) {
+    html, body, .page {
+      width: 100%;
+      height: auto;
+    }
+
+    .page { min-height: 0; }
+    .player { flex: none; aspect-ratio: 182 / 94; }
+    .channel-bar { flex-wrap: wrap; gap: 8px; }
+    .channel-icon { flex-shrink: 0; }
+    .comment { flex: 0 0 auto; padding: 7px 0; }
+    .comment-message { font-size: 13px; padding: 6px 8px; }
+    .description, .pinned-text { font-size: 13px; }
+    .video-meta, .channel-subs, .comment-actions, .comment-time, .pinned-label { font-size: 11px; }
+    .comment-name, .channel-name { font-size: 12px; }
+    .video-title-ending, .hashtag { white-space: nowrap; }
+  }
+
+  @media print {
+    html, body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- トップバー -->
+  <div class="topbar">
+    <div class="yt-logo">
+      <div class="yt-logo-icon"></div>
+      <div class="yt-logo-text">Hare Tube</div>
+    </div>
+    <div class="topbar-icons">
+      <div class="icon-search"></div>
+      <div class="icon-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+    <!-- 動画プレイヤー -->
+  <div class="player">
+    <img src="./images/wedding-collage.jpg" alt="友人たちとの思い出を集めた写真コラージュ" class="player-photo">
+    <div class="player-lettering" aria-hidden="true">
+      <span class="player-celebration">祝</span>
+      <span class="player-congratulations">結婚おめでとう</span>
+    </div>
+    <div class="player-controls">
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="controls-row">
+        <div class="controls-left">
+          <span>▶</span>
+          <span>08:24 / 22:15</span>
+        </div>
+        <div class="controls-right">
+          <span>⚙</span>
+          <span>⛶</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- タイトル -->
+  <div class="title-section">
+    <div class="video-title">
+      【祝・御結婚】そうた、ついに<span class="highlight">結婚した件。</span><span class="video-title-ending">【おめでとう】</span>
+    </div>
+    <div class="video-meta">
+      再生回数 1,260,480回視聴 ・ 2024年10月12日 ・ <span class="hashtag">#ハレの日</span> <span class="hashtag">#結婚おめでとう</span> <span class="hashtag">#そうた</span> <span class="hashtag">#みお</span>
+    </div>
+  </div>
+
+  <!-- チャンネル -->
+  <div class="channel-bar">
+    <div class="channel-info">
+      <div class="channel-icon">晴</div>
+      <div class="channel-meta">
+        <div class="channel-name">ハレの日チャンネル</div>
+        <div class="channel-subs">登録者 8人 ・ ふたりを見守ってきた仲間たち</div>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <div class="subscribe-btn"><span class="heart">♥</span> 登録済み</div>
+
+      <div class="action-btn like-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+          <path d="M7 11l3.4-7.1A2 2 0 0 1 14.2 5v5h4.6a2 2 0 0 1 2 2.4l-1.5 7A2 2 0 0 1 17.4 21H7z"></path>
+        </svg>
+        <span>8.24万</span>
+      </div>
+
+      <div class="action-btn share-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18 8l4 4-4 4"></path>
+          <path d="M22 12H10a6 6 0 0 0-6 6v2"></path>
+        </svg>
+        <span>共有</span>
+      </div>
+
+      <div class="action-btn save-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 10H3"></path>
+          <path d="M14 6H3"></path>
+          <path d="M10 14H3"></path>
+          <path d="M17 14v7"></path>
+          <path d="M21 17.5h-7"></path>
+        </svg>
+        <span>保存</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 説明欄 -->
+  <div class="info-section">
+    <div class="description">
+      <div class="desc-meta">1,260,480回視聴 ・ 2024年10月12日</div>
+      <div><span class="hashtag">#ハレの日</span> そうたとみおの結婚を祝って、学生時代の仲間たちからメッセージを集めました。放課後の音楽室から今日の披露宴まで、ふたりを囲む笑顔はいつも変わりません。これからも、楽しい思い出がたくさん増えますように。（制作：友人一同）</div>
+      <div style="margin-top: 0.6mm;"><span class="hashtag">#結婚式</span> <span class="hashtag">#高校からの仲間</span> <span class="hashtag">#おめでとう</span></div>
+    </div>
+  </div>
+
+  <!-- コメントセクション -->
+  <div class="comments-section">
+
+    <div class="comments-header">
+      <div class="comments-title">💬 コメント</div>
+      <div class="comments-count">7件</div>
+    </div>
+
+    <div class="pinned-comment">
+      <div class="pinned-label">📌 ピン留めされたコメント</div>
+      <div class="pinned-content">
+        <div class="pinned-avatar">友</div>
+        <div class="pinned-text">
+          そうた＆みお、<span class="highlight">結婚おめでとう！！</span>　これからも2人でたくさん笑えますように❤
+        </div>
+      </div>
+    </div>
+
+    <div class="comment-list">
+
+      <div class="comment">
+        <div class="comment-avatar avatar-A"><img src="./images/friend-1.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@れん</span>
+            <span class="comment-time">1日前</span>
+          </div>
+          <div class="comment-message">結婚おめでとう！ 初めてふたりで遊びに来てくれた日に、すっかり意気投合したのを覚えています。またみんなで集まろう！</div>
+          <div class="comment-actions"><span>👍 86</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-avatar avatar-B"><img src="./images/friend-2.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@ゆうき</span>
+            <span class="comment-time">2日前</span>
+          </div>
+          <div class="comment-message">放課後にふざけてばかりいた頃から、こんな日が来るとは。ふたりの晴れ姿を見られてうれしかったよ。</div>
+          <div class="comment-actions"><span>👍 74</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-avatar avatar-C"><img src="./images/friend-3.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@じゅん</span>
+            <span class="comment-time">2日前</span>
+          </div>
+          <div class="comment-message">練習のあとによく寄ったあの店、今度はふたりで来てね。これからの毎日にも、好きな音楽と笑い声があふれますように。</div>
+          <div class="comment-actions"><span>👍 63</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-avatar avatar-D"><img src="./images/friend-4.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@さき</span>
+            <span class="comment-time">1日前</span>
+          </div>
+          <div class="comment-message">みお、今日のドレス姿、本当に素敵だった！ そうたと並んで笑っているふたりを見て、私まで幸せな気持ちになりました。</div>
+          <div class="comment-actions"><span>👍 91</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-avatar avatar-E"><img src="./images/friend-5.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@なお</span>
+            <span class="comment-time">3時間前</span>
+          </div>
+          <div class="comment-message">旅行の計画を立てるときみたいに、これからもふたりでわくわくすることを見つけてね。末永くお幸せに！</div>
+          <div class="comment-actions"><span>👍 48</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+            <div class="comment">
+        <div class="comment-avatar avatar-F"><img src="./images/friend-6.jpg" alt=""></div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">@りく</span>
+            <span class="comment-time">3時間前</span>
+          </div>
+          <div class="comment-message">今日のみんなの笑顔を集めて、このページを作りました。何年たっても、見返すたびに今日を思い出してくれたらうれしいです。</div>
+          <div class="comment-actions"><span>👍 52</span><span class="reply-link">返信</span></div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
