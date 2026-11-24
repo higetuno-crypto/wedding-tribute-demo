@@ -4,6 +4,6 @@
 
 ## 閲覧と印刷
 
-`index.html` をブラウザーで開いてください。画像は `images` フォルダーに含まれています。
+[Webデモを開く](https://higetuno-crypto.github.io/wedding-tribute-demo/)。ローカルで見る場合は `index.html` をブラウザーで開いてください。
 
-印刷する場合は、確認用PDF（`wedding-tribute-b5.pdf`）を JIS B5（182 × 257 mm）縦・実際のサイズで出力してください。ページ端まで色を出すには、プリンターの用紙と設定がフチなし印刷に対応している必要があります。HTMLから直接印刷する場合は、背景のグラフィックをオンにし、ブラウザーのヘッダーとフッターをオフにしてください。
+印刷する場合は、[確認用PDF](https://higetuno-crypto.github.io/wedding-tribute-demo/wedding-tribute-b5.pdf) を JIS B5（182 × 257 mm）縦・実際のサイズで出力してください。ページ端まで色を出すには、プリンターの用紙と設定がフチなし印刷に対応している必要があります。HTMLから直接印刷する場合は、背景のグラフィックをオンにし、ブラウザーのヘッダーとフッターをオフにしてください。
